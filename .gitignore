@@ -1,0 +1,14 @@
+# System Files
+.DS_Store
+Thumbs.db
+
+# Python cache
+__pycache__/
+tests/__pycache__/
+
+# User Files
+input/
+data/
+
+# Personal Files and Notes
+TODO.md
