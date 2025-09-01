@@ -1,12 +1,11 @@
-# FIFO CGT Tax Calculation App
+# FIFO CGT Tax Calculator (in development)
 
-**Disclaimers**  
-- This application is for informational purposes only; always check results for accuracy.
-- Currently supports assets taxed under Irish CGT (33%), such as company shares and crypto. ETFs are not supported (taxed under Exit Tax, 41%).
+**Disclaimer**  
+This application is for informational and educational purposes only and does not constitute financial, tax, or legal advice. No warranty is given as to the accuracy, completeness, or suitability of the results for your specific circumstances. Always consult a qualified professional and verify results independently before making any financial or tax decisions. Use of this software is at your own risk; the author accepts no liability for any loss or damage arising from its use.
 
 ## Orientation
 
-This app helps you calculate taxable gains using FIFO logic for share and crypto disposals.
+This app aims to cover the most important CGT rules outlined by Irish Revenue found here: [Revenue.ie: 7. Selling or disposing of shares](https://www.revenue.ie/en/gains-gifts-and-inheritance/transfering-an-asset/how-to-calculate-cgt.aspx) (last accessed: Sep 2025).
 
 **User steps:**  
 1. Prepare a `trades.csv` file (see schema below) and place it in `/input` or use existing csv and delete dummy values.
@@ -39,33 +38,25 @@ Save your trades to `/input/mytrades.csv` with these columns:
 
 ### Execution
 
+to follow
 
-## Irish Revenue 
+## Context 
 
-Irish Revenue (Office of the Revenue Commissioners) is Ireland’s tax and customs authority, it collects taxes, enforces customs, and implements tax law to fund public services. 
+Irish Revenue (Office of the Revenue Commissioners) is Ireland’s tax and customs authority, it collects taxes, enforces customs, and implements tax law to fund public services. To understand CGT in Ireland better I aimed at implementing some their rules for educational purposes:
 
-Most important rules for CGT in personal finance:
-
-#### Covered:
+#### Implemented:
 
 - **Rate**: 33% on net gains. 
 - **Annual exemption**: First €1,270 of gains tax-free.
 - **FIFO**: First shares bought are considered first sold.
 - **Gain calculation**: Gain = Sale proceeds − (purchase cost + fees).
 
-#### Not yet covered:
+#### Not yet implemented:
 - **4-Week Rule**: Losses are ignored if you repurchase the same asset within 4 weeks.
 - **Bonus shares**: Adjust cost per share proportionally if you receive free shares.
 - **Rights issues**: Consider enhancement expenditure if you buy discounted shares via rights.
 - **Different share classes**: Allocate cost and enhancements by relative market value.
 - (**ETFs**: Taxed under Exit Tax (41%), FIFO doesn’t apply, and there’s an 8-year deemed disposal.)
-
-### Dates to keep in mind
-
-For disposals made between:
-
-- 1 January and 30 November, you must pay CGT by **15 December** of the same year
-- 1 December and 31 December, you must pay CGT by **31 January** of the next year.
 
 ## Function Reference (auto-generated)
 <!-- FUNCTION_REFERENCE_START -->
