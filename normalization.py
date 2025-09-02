@@ -9,8 +9,6 @@ VALID_TRADE_TYPES = ["buy", "sell"]
 REQUIRED_FIELDS = ["Date", "Type", "Asset", "Quantity", "Price"]
 EXPECTED_COLUMNS = ["Date", "Type", "Asset", "Quantity", "Price", "Fees", "Notes"]
 
-MY_TRADES_PATH = "input/my_trades.csv"
-NORMALIZED_TRADES_PATH = "data/normalized_trades.csv"
 # --- Helper Functions Start
 def is_valid_number(num: str) -> bool:
     """
@@ -139,13 +137,13 @@ def load_existing_txids(file_path: str) -> set:
 
 # --- Helper Functions End
 
-def main() -> None:
+def run_normalization(my_trades: str, normalized_trades: str) -> None:
     """
     Main function to process trade data.
     """
     trades = []
 
-    with open(MY_TRADES_PATH, "r") as f:
+    with open(my_trades, "r") as f:
         raw_trades = list(csv.DictReader(f))
 
     error_report = check_valid_input(raw_trades)
@@ -154,12 +152,12 @@ def main() -> None:
         print("ERROR: Errors found in the CSV file:")
         for err in error_report:
             print(err)
+        print("WARNING: Please fix these errors before trying again.")
+        return
 
     else:
-        existing_txids = load_existing_txids(NORMALIZED_TRADES_PATH)
-
+        existing_txids = load_existing_txids(normalized_trades)
         for t in raw_trades:
-            
             txid = make_txid({
                 "Date": t["Date"].strip(),
                 "Type": t["Type"].strip().lower(),
@@ -194,8 +192,5 @@ def main() -> None:
                 })
                 existing_txids.add(txid)
     if trades:
-        write_trades_normalized(trades, NORMALIZED_TRADES_PATH)
+        write_trades_normalized(trades, normalized_trades)
     else: print("INFO: No new trades found.")
-
-if __name__ == "__main__":
-    main()

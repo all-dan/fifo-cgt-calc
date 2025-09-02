@@ -8,7 +8,7 @@ start_marker = "<!-- FUNCTION_REFERENCE_START -->"
 end_marker = "<!-- FUNCTION_REFERENCE_END -->"
 
 # --- List of modules to document
-scripts = [normalization, app, fifo]
+scripts = [normalization, fifo, app]
 
 # --- New Content to Insert
 func_docs = ""
